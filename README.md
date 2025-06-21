@@ -1,26 +1,48 @@
-# Timilehin.github.io
-<html>
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
-    />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Phone Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'primary-dark': '#4B4BC8'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .phone-card {
+            transition: all 0.3s ease;
+        }
+        .phone-card:hover {
+            transform: translateY(-2px);
+        }
+        .loading {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .call-animation {
+            animation: ring 1s ease-in-out infinite;
+        }
+        @keyframes ring {
+            0%, 50% { transform: scale(1); }
+            25%, 75% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-6xl">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-center mb-2">Virtual Phone Manager</h1>
+            <p class="text-gray-600 dark:text-gray-400 text-center">Manage your virtual phone numbers</p>
+        </div>
 
-    <title>Stitch Design</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-  <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
-      <div>
-        <div class="@container">
-          <div class="@[480px]:p-4">
-            <div
-              class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4"
-              style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCueipIWcs_tX94IOaIFMQygWaaCigpX5Z2S_kxXF5P4MWLOiqzOu-8YmJhXuhbVyg2840ooab183il3PaowDvMmRsJ3BFSafuahjR1stJHN_wHN-ZX6RwMFGnYp1ORhlkjqH4D_bImIu1qIg2GNOVwYgIOq4JMuNBE-mvf03qMWd8AjXtrLzMzXdRqgr8P1OgPVsbvfWSNnLSYE42kuiywU7hzO3EM4aLsu99SJSPn3fHdV00I6JomAxpAMJoLXcGTvwAnzktM26s");'
-            >
-              <div class="flex flex-col gap-2 text
+        <!-- API Status -->
+        <div id="apiStatus" class="mb-6 
